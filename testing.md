@@ -3,6 +3,13 @@
 Assuming you have followed instructions on https://facebook.github.io/react-native/docs/getting-started.html#content
 and installed react-native, android studio and created an emulation device then you would do the following.
 
+If you have just cloned this git repository onto your computer for the first time you will need to initialize the BallzyApp folder as a react-native project.
+
+1. navigate to SETeams/ directory
+2. command: "react-native init BallzyApp" 
+	Now your App directory will be recognized when you run the app.
+
+
 Open up a terminal and go to the BallzyApp directory.
 First off run avd manager by running the following command.
 
