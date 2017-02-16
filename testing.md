@@ -8,7 +8,15 @@ If you have just cloned this git repository onto your computer for the first tim
 1. navigate to SETeams/ directory
 2. run command: 
 
+This command will remove changes made to index js files and add it's own
+code. When you run app basic welcom text will show up.
+
 ```react-native init BallzyApp```
+
+I would suggest running the following command instead to keep changes made
+to app.
+
+```npm install```
 
 Now your App directory will be recognized when you run the app.
 
