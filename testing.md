@@ -45,6 +45,7 @@ Make sure you are in the BallzyApp directory and then run the following.
 ```react-native start &```
 
 
+Take note of the pid so you can kill the process later.
 press enter again and then run the following
 
 
