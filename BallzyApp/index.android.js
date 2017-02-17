@@ -18,6 +18,7 @@ import BallzyLogin from './BallzyLogin/BallzyLogin';
 class BallzyApp extends Component {
   render() {
     return (
+//Uncomment the following line to see what it does.
 //      <BallzyLogin/>
     )
   }
