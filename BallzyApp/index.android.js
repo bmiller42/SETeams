@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+
 import {
   AppRegistry,
   StyleSheet,
@@ -12,11 +13,13 @@ import {
   View
 } from 'react-native';
 
-export default class BallzyApp extends Component {
+import BallzyLogin from './BallzyLogin/BallzyLogin';
+
+class BallzyApp extends Component {
   render() {
     return (
-      <Text></Text>
-    );
+//      <BallzyLogin/>
+    )
   }
 }
 
