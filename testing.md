@@ -15,7 +15,9 @@ in your preferred directory.
 2. run command: 
 
 This command will remove changes made to index js files and add it's own
-code. When you run app basic welcome text will show up.
+code. 
+
+When you run app basic welcome text will show up.
 
 ```react-native init BallzyApp```
 
@@ -27,8 +29,8 @@ to keep changes made to app.
 
 Now your App directory will be recognized when you run the app.
 
-
 Open up a terminal and go to the BallzyApp directory.
+
 First off run avd manager by running the following command.
 
 
@@ -38,7 +40,9 @@ First off run avd manager by running the following command.
 Press enter to free up terminal.
 
 Avd should start so choose your emulation device or create one.
+
 Start the emulation device.
+
 Make sure you are in the BallzyApp directory and then run the following.
 
 
@@ -46,7 +50,8 @@ Make sure you are in the BallzyApp directory and then run the following.
 
 
 Take note of the pid so you can kill the process later.
-press enter again and then run the following
+
+Press enter again and then run the following
 
 
 ```react-native run-android```
