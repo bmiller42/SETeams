@@ -3,31 +3,23 @@
 Assuming you have followed instructions on https://facebook.github.io/react-native/docs/getting-started.html#content
 and installed react-native, android studio and created an emulation device then you would do the following.
 
-If you have just cloned this git repository onto your computer for the first time you will need to initialize the BallzyApp folder as a react-native project. 
+If you want to make a new react-native project just for testing purposes use the following command without the brackets
 
-If you haven't cloned directory run the following command in your terminal
-in your preferred directory.
+```react-native init <directoryName>```
 
+-----------------------------------------------------------
+
+Clone the current Ballzy App code into your current directory
 
 ```git clone https://github.com/bmiller42/SETeams```
 
-1. navigate to SETeams/ directory
-2. run command: 
+If you have just cloned this git repository for the first time you will need to initialize the BallzyApp folder as a react-native project. 
 
-This command will remove changes made to index js files and add it's own
-code. 
-
-When you run app basic welcome text will show up.
-
-```react-native init BallzyApp```
-
-I would suggest running the following command in BallzyApp directory instead 
-to keep changes made to app.
+1. navigate to SETeams/BallzyApp
+2. run the follwing command: ```npm install```
 
 
-```npm install```
-
-Now your App directory will be recognized when you run the app.
+Now your BallzyApp directory will be recognized when you run the app.
 
 Open up a terminal and go to the BallzyApp directory.
 
