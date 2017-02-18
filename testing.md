@@ -50,4 +50,7 @@ Press enter again and then run the following
 
 You should see the app start up in the emulation device.
 
+If you update code pressing r twice quickly on your keyboard while emulator is selected will 
+update the app.
+
 If you have a better process for running app on emulation device let me know.
