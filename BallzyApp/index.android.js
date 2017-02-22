@@ -6,22 +6,25 @@
 
 import React, { Component } from 'react';
 
+
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
 
-import BallzyLogin from './BallzyLogin/BallzyLogin';
+import BallzyRoot from './BallzyRoot/BallzyRoot';
+import BallzyNav from './BallzyNav/BallzyNav';
 
 class BallzyApp extends Component {
   render() {
     return (
-//Uncomment the following line to see what it does.
-//      <BallzyLogin/>
-    )
+      <Text></Text>
+    );
   }
 }
+
 
 AppRegistry.registerComponent('BallzyApp', () => BallzyApp);
