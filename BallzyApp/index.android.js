@@ -16,7 +16,6 @@ import {
 } from 'react-native';
 
 import BallzyRoot from './BallzyRoot/BallzyRoot';
-import BallzyNav from './BallzyNav/BallzyNav';
 
 class BallzyApp extends Component {
   render() {
