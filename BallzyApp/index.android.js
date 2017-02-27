@@ -16,14 +16,7 @@ import {
 } from 'react-native';
 
 import BallzyRoot from './BallzyRoot/BallzyRoot';
-
-class BallzyApp extends Component {
-  render() {
-    return (
-      <Text></Text>
-    );
-  }
-}
+import App from './BallzyNavCardstack/BallzyNavCardstack';
 
 
-AppRegistry.registerComponent('BallzyApp', () => BallzyApp);
+AppRegistry.registerComponent('BallzyApp', () => App);
