@@ -81,4 +81,4 @@ var styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default challenges;
