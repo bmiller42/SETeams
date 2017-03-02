@@ -4,20 +4,10 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+ import {
+   AppRegistry
+ } from 'react-native';
 
-export default class BallzyApp extends Component {
-  render() {
-    return (
-      <Text></Text>
-    );
-  }
-}
+ import App from './src/App';
 
-AppRegistry.registerComponent('BallzyApp', () => BallzyApp);
+ AppRegistry.registerComponent('BallzyApp', () => App);
