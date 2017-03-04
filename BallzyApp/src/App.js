@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Challenges from './components/challenges/Challenges';
+import New from './components/challenges/New';
 import Chat from './components/chat/Chat';
 import Payments from './components/payments/Payments';
 import Videos from './components/videos/Videos';
@@ -21,6 +22,7 @@ class App extends React.Component {
       <Router>
         <Scene key='root' style={{paddingTop: 64}}>
           <Scene key='challenges' component={Challenges} title='challenges'/>
+          <Scene key='new' component={New} title='Create Challenge'/>
           <Scene key='chat' component={Chat} title='chat'/>
           <Scene key='payments' component={Payments} title='payments'/>
           <Scene key='videos' component={Videos} title='videos'/>
