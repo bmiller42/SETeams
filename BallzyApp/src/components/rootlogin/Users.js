@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {StyleSheet, Button, View, Text, Navigator} from 'react-native';
 
 /* This line imports BarInput component from TextInput.js */
@@ -6,7 +6,7 @@ import {StyleSheet, Button, View, Text, Navigator} from 'react-native';
 /* export dafault is needed to import the class into another file */
 
 
-export default class BallzyLogin extends Component {
+class users extends React.Component {
   render() {
     return (
 
@@ -16,14 +16,14 @@ export default class BallzyLogin extends Component {
           <Text style={styles.BigBlack}>Ballzy</Text>
         </View>
         <View style={{flex: 1, backgroundColor: 'blue'}}>
-          <View style={{flex: 1, flexDirection: 'row'}}> 
+          <View style={{flex: 1, flexDirection: 'row'}}>
             <View style={{flex: 1, backgroundColor: 'white'}}/>
             <View style={{flex: 2, backgroundColor: 'white', justifyContent: 'space-between'}}>
               <View style={{flex:2}}/>
               <Button
                 title="Login"
                 color="blue"
-              /> 
+              />
               <View style={{flex:1}}/>
               <Button
                 title="Register"
@@ -36,7 +36,7 @@ export default class BallzyLogin extends Component {
         </View>
         <View style={{flex: 1, backgroundColor: 'white'}}/>
       </View>
-      
+
     );
   }
 }
@@ -48,4 +48,5 @@ const styles = StyleSheet.create({
     fontSize: 80,
   },
 });
-  
+
+export default users;

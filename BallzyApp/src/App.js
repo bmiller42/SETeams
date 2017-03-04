@@ -1,9 +1,10 @@
 import React from 'react';
 
-import challenges from './components/challenges/challenges';
-import chat from './components/chat/chat';
-import payments from './components/payments/payments';
-import videos from './components/videos/videos';
+import Challenges from './components/challenges/Challenges';
+import Chat from './components/chat/Chat';
+import Payments from './components/payments/Payments';
+import Videos from './components/videos/Videos';
+import Users from './components/users/Users';
 
 import {
     Router,
@@ -19,10 +20,11 @@ class App extends React.Component {
     return (
       <Router>
         <Scene key='root' style={{paddingTop: 64}}>
-          <Scene key='challenges' component={challenges} title='challenges'/>
-          <Scene key='chat' component={chat} title='chat'/>
-          <Scene key='test' component={payments} title='payments'/>
-          <Scene key='videos' component={videos} title='videos'/>
+          <Scene key='challenges' component={Challenges} title='challenges'/>
+          <Scene key='chat' component={Chat} title='chat'/>
+          <Scene key='payments' component={Payments} title='payments'/>
+          <Scene key='videos' component={Videos} title='videos'/>
+          <Scene key='users' component={Users} title='users'/>
         </Scene>
       </Router>
     );
