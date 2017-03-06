@@ -1,4 +1,5 @@
-#Running Ballzy App
+#
+unning Ballzy App
 ##Linux Instructions
 Assuming you have followed instructions on https://facebook.github.io/react-native/docs/getting-started.html#content
 and installed react-native, android studio and created an emulation device then you would do the following.
@@ -54,3 +55,9 @@ If you update code pressing r twice quickly on your keyboard while emulator is s
 update the app.
 
 If you have a better process for running app on emulation device let me know.
+
+
+npm i react-native-flux --save
+npm install --save react-native-sqlite-storage
+
+I followed the instructions for Android here: https://github.com/andpor/react-native-sqlite-storage
