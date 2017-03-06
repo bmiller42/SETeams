@@ -80,7 +80,6 @@ var styles = StyleSheet.create({
   NavigationButton: {
     backgroundColor: '#121212',
     flex: 1,
-    opacity: 100,
     alignItems: 'center',
     justifyContent: 'center',
   },

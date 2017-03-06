@@ -10,7 +10,7 @@ class Chat extends Component {
     return(
       <View style={{flex:1}}>
         <View style={{flex: 10}}>
-          <Text>Hello from settings</Text>
+          <Text>Hello from Chat</Text>
         </View>
         <NavigationBar/>
       </View>
