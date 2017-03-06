@@ -27,7 +27,7 @@ class Users extends React.Component {
             </View>
             <View style={{flex: 3}}>
               <View style={styles.followButton}>
-                <Text>Follow</Text>
+                <Text style={{color:'white'}}>Follow</Text>
 
               </View>
               <View style={{flex: 7}}></View>
