@@ -18,19 +18,22 @@ class Users extends React.Component {
             <View style={{flex: 3}}>
             </View>
             <View style={styles.profileArea}>
-              <View style={{flex: 6}}>
+              <View style={{flex: 7}}>
+                <Image
+                  style={styles.image}
+                  source={require('./profile.png')}
+                />
               </View>
-              <View style={{flex: 4}}>
-                <Text>Following:</Text>
-                <Text>Posts:</Text>
+              <View style={{flex: 3}}>
+                <View style={{flex: 1}}>
+                  <Text>Followers:</Text>
+                </View>
+                <View style={{flex: 1}}>
+                  <Text>Posts:</Text>
+                </View>
               </View>
             </View>
             <View style={{flex: 3}}>
-              <View style={styles.followButton}>
-                <Text style={{color:'white'}}>Follow</Text>
-
-              </View>
-              <View style={{flex: 7}}></View>
             </View>
           </View>
           <View style={styles.Tabs}>
@@ -53,8 +56,8 @@ export default Users;
 
 var styles = StyleSheet.create({
   UserInfo: {
-    flex: 3,
-    backgroundColor: 'white',
+    flex: 3.5,
+    backgroundColor: '#EFEFEF',
     flexDirection: 'row'
   },
 
@@ -71,7 +74,7 @@ var styles = StyleSheet.create({
   },
 
   Content: {
-    flex: 6,
+    flex: 5.5,
     backgroundColor: 'white',
   },
 
@@ -82,10 +85,17 @@ var styles = StyleSheet.create({
   },
 
   followButton: {
-    opacity: .1,
+    opacity: 1,
     backgroundColor: '#121212',
     flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  image: {
+    flex: 1,
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+  }
 })

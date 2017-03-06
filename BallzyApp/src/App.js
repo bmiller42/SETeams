@@ -20,7 +20,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <Scene key='root' style={{paddingTop: 64}}>
+        <Scene key='root' style={{paddingTop: 54}}>
           <Scene key='challenges' component={Challenges} title='challenges'/>
           <Scene key='new' component={New} title='Create Challenge'/>
           <Scene key='chat' component={Chat} title='chat'/>
