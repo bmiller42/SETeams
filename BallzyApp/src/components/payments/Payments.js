@@ -2,7 +2,9 @@ import React from 'react';
 import NavigationBar from '../navigationbar/NavigationBar';
 import {
   Text,
+  StyleSheet,
   View,
+  Button,
 } from 'react-native';
 
 class Payments extends React.Component {
@@ -10,12 +12,10 @@ class Payments extends React.Component {
     return(
       <View style={{flex: 1}}>
         <View style={{flex: 10}}>
-          <Text>Hello from payments</Text>
-	  <Button style={styles.button1}>
-            "Pay with Card"
-          </Button>
-	  <Button style={styles.button2}>
-	    "Pay with Stripe"
+          <Text>Hello from Payments!</Text>
+	  <Button title="Pay with Card" style={styles.button1}>
+	  </Button>
+	  <Button title="Pay with Stripe" style={styles.button2}>
 	  </Button>
         </View>
         <NavigationBar/>
@@ -27,12 +27,12 @@ class Payments extends React.Component {
 
 var styles = StyleSheet.create({
   button1: {
-    topMargin: 20
+    marginTop: 20,
     marginLeft: 20,
     fontSize: 20,
   },
   button2: {
-    marginTop: 40
+    marginTop: 40,
     marginLeft: 20,
     fontSize: 20,
   },
