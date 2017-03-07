@@ -6,6 +6,7 @@ import {
     StyleSheet,
     TextInput,
     TouchableOpacity,
+    ListView,
 } from 'react-native';
 
 import {
@@ -16,6 +17,16 @@ class Challenges extends React.Component {
   state = {
     search: '',
   };
+
+  constructor(props) {
+    super(props);
+
+    const ds = new ListView.DataSource({rowHasChanged:(r1,r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+    };
+
+  }
 
   render() {
     return (
@@ -31,6 +42,23 @@ class Challenges extends React.Component {
             }}
             value={this.state.search}
           />
+
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) => <Text>{rowData}</Text>}
+          />
+
+          <Text style={styles.title}>
+            Title: {this.props.title}
+          </Text>
+          <Text style={styles.title}>
+          Description: {this.props.description}
+          </Text>
+          <Text style={styles.title}>
+          Price: {this.props.price}
+          </Text>
+
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <TouchableOpacity
           onPress={() => {
             Actions.new({
@@ -44,17 +72,18 @@ class Challenges extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity
-        onPress={() => {
-          Actions.new({
-            search: this.state.search,
-          });
-        }}
+          onPress={() => {
+            Actions.new({
+              search: this.state.search,
+            });
+          }}
         >
-        <Text style={styles.buttonText}>
-          Create
-        </Text>
-      </TouchableOpacity>
-
+          <Text style={styles.buttonText}>
+            Create
+          </Text>
+        </TouchableOpacity>
+        </View>
+        
         </View>
         <NavigationBar/>
       </View>
@@ -62,9 +91,16 @@ class Challenges extends React.Component {
   }
 }
 
+
+Challenges.propTypes = {
+  title: React.PropTypes.string,
+  description: React.PropTypes.string,
+  price: React.PropTypes.string,
+};
+
 var styles = StyleSheet.create({
   title: {
-    marginTop: 20,
+    marginTop: 10,
     marginLeft: 20,
     fontSize: 20,
   },
@@ -76,9 +112,21 @@ var styles = StyleSheet.create({
   },
 
   buttonText: {
+    borderColor: 'black',
+    borderWidth: 1,
+    margin: 20,
     marginLeft: 20,
     fontSize: 20,
   },
+
+  button: {
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 10,
+    height: 50,
+  }
 });
 
 export default Challenges;
