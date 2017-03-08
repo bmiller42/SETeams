@@ -1,5 +1,8 @@
 import React from 'react';
 import NavigationBar from '../navigationbar/NavigationBar';
+import ScrollableTabView, {DefaultTabBar} from 'react-native-scrollable-tab-view';
+import Posts from './Posts';
+import UserChallenges from './UserChallenges';
 import {
   Text,
   View,
@@ -8,6 +11,7 @@ import {
   Image,
   Button,
 } from 'react-native';
+
 
 class Users extends React.Component {
   render() {
@@ -36,15 +40,21 @@ class Users extends React.Component {
             <View style={{flex: 3}}>
             </View>
           </View>
-          <View style={styles.Tabs}>
-            <TouchableHighlight style={styles.NavigationButton}>
-              <Text style={{color: 'white'}}>Posts</Text>
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.NavigationButton}>
-              <Text style={{color: 'white'}}>Challenges</Text>
-            </TouchableHighlight>
+          <View style={styles.Content}>
+            <ScrollableTabView
+              renderTabBar={() => <DefaultTabBar />}
+              tabBarBackgroundColor= 'black'
+              tabBarInactiveTextColor = 'white'
+              tabBarActiveTextColor = 'white'
+              tabBarUnderlineStyle = {{
+                backgroundColor: 'white',
+                opacity: .2
+              }}
+            >
+              <Posts tabLabel='Posts'/>
+              <UserChallenges tabLabel='Challenges'/>
+            </ScrollableTabView>
           </View>
-          <View style={styles.Content}></View>
         </View>
         <NavigationBar/>
       </View>
@@ -74,7 +84,7 @@ var styles = StyleSheet.create({
   },
 
   Content: {
-    flex: 5.5,
+    flex: 6.5,
     backgroundColor: 'white',
   },
 

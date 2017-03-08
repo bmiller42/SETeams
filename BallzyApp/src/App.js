@@ -7,6 +7,8 @@ import Payments from './components/payments/Payments';
 import Videos from './components/videos/Videos';
 import Users from './components/users/Users';
 
+import { TabViewAnimated, TabBar } from 'react-native-tab-view';
+
 import {
     Router,
     Scene,
