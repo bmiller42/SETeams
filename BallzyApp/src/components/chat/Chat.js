@@ -18,7 +18,8 @@ class Chat extends React.Component {
   };
   render() {
     return(
-      <View>
+      <View style={{flex: 1}}>
+        <View style={{flex:10}}>
           <Text style={styles.title}> 
             Enter your name: 
           </Text>
@@ -38,9 +39,10 @@ class Chat extends React.Component {
             }}
            >
             <Text style={styles.buttonText}>
-              NExt
+              Next
             </Text>
            </TouchableOpacity>
+          </View>
         <NavigationBar/>
       </View>
     );
