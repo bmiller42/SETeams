@@ -1,10 +1,5 @@
-#Software Engineering
+We will be using Jasmine framework for testing our react-native App
 
-##These are the teams for CSCI 430, Spring 2017:
+https://medium.com/salida-software/react-native-testing-with-jasmine-2732c7ca206b#.17c2u0sy8
 
-* Ballzy
-* BossyUI
-* eSports Connect
-* Job Match
-* MESA Career Fair
-* Pocket TA
+npm install lodash baobab --save
