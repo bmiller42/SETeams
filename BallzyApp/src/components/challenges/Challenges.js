@@ -30,7 +30,7 @@ class Challenges extends React.Component {
 
   render() {
     return (
-      <View style={{flex:1}}>
+      <View style={styles.container}>
         <View style={{flex:10}}>
           <TextInput
             style={styles.titleInput}
@@ -52,19 +52,20 @@ class Challenges extends React.Component {
             Title: {this.props.title}
           </Text>
           <Text style={styles.title}>
-          Description: {this.props.description}
+            Description: {this.props.description}
           </Text>
           <Text style={styles.title}>
-          Price: {this.props.price}
+            Price: {this.props.price}
           </Text>
 
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{flex:0.5, flexDirection: 'row', justifyContent: 'space-between'}}>
           <TouchableOpacity
-          onPress={() => {
-            Actions.new({
-              search: this.state.search,
-            });
-          }}
+            style={styles.button}
+            onPress={() => {
+              Actions.new({
+                search: this.state.search,
+              });
+            }}
           >
           <Text style={styles.buttonText}>
             Search
@@ -72,6 +73,7 @@ class Challenges extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity
+          style={styles.button}
           onPress={() => {
             Actions.new({
               search: this.state.search,
@@ -83,7 +85,7 @@ class Challenges extends React.Component {
           </Text>
         </TouchableOpacity>
         </View>
-        
+
         </View>
         <NavigationBar/>
       </View>
@@ -99,33 +101,41 @@ Challenges.propTypes = {
 };
 
 var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#00BFFF'
+  },
   title: {
     marginTop: 10,
     marginLeft: 20,
     fontSize: 20,
   },
   titleInput: {
+    padding: 5,
     height: 40,
     borderWidth: 2,
     borderColor: 'black',
     margin: 20,
+    backgroundColor: 'white'
   },
 
   buttonText: {
-    borderColor: 'black',
-    borderWidth: 1,
-    margin: 20,
-    marginLeft: 20,
+    alignSelf: 'center',
+    textAlign: 'center',
+    padding: 5,
     fontSize: 20,
+    color: '#FFFFFF'
   },
 
   button: {
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    backgroundColor: 'white',
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderRadius: 5,
+    height: 40,
+    width: 90,
+    borderColor: '#7F8284',
+    backgroundColor: '#AEB3B7',
     borderRadius: 10,
-    padding: 10,
-    height: 50,
   }
 });
 

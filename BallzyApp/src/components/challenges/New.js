@@ -20,7 +20,7 @@ class New extends React.Component {
   };
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>
           Title:
         </Text>
@@ -56,6 +56,7 @@ class New extends React.Component {
         />
 
         <TouchableOpacity
+        style={styles.button}
         onPress={() => {
           Actions.challenges({
             title: this.state.title,
@@ -70,7 +71,7 @@ class New extends React.Component {
         </TouchableOpacity>
 
         <Text>
-          //{this.props.search}
+
         </Text>
 
       </View>
@@ -87,21 +88,40 @@ New.propTypes = {
 };
 
 var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'stretch',
+    backgroundColor: '#00BFFF'
+  },
   title: {
     marginTop: 20,
     marginLeft: 20,
     fontSize: 20,
   },
   titleInput: {
+    padding: 5,
     height: 40,
     borderWidth: 2,
     borderColor: 'black',
     margin: 20,
+    backgroundColor: 'white'
   },
+  button: {
 
+    borderWidth: 1,
+    borderRadius: 5,
+    height: 40,
+    width: 90,
+    borderColor: '#7F8284',
+    backgroundColor: '#AEB3B7',
+    borderRadius: 10
+  },
   buttonText: {
-    marginLeft: 20,
+    alignSelf: 'center',
+    textAlign: 'center',
+    padding: 5,
     fontSize: 20,
+    color: '#FFFFFF'
   },
 });
 

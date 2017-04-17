@@ -12,13 +12,31 @@ import{
   Actions,
   } from 'react-native-router-flux';
 
+import Channels from './Channels';
+
+
 class Chat extends React.Component {
+  /*constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      connectLabel: 'CONNECT',
+      buttonDisabled: true,
+      errorMessage: ''
+    };
+    this._onPressOpenChannel = this._onPressOpenChannel.bind(this);
+  }
+  */
+
   state = {
     name: '',
   };
+
   render() {
     return(
-      <View style={styles.container}>
+      <View
+        style={styles.container}
+      >
         <View style={styles.loginContainer}>
           <Text style={styles.title}>
             Enter user nickname!
@@ -31,8 +49,14 @@ class Chat extends React.Component {
           />
           <TouchableOpacity
             style = {styles.button}
+            //onPress = {() => {
+            //console.log(this.state.name);
+            //}}
+            //onPress={this._onPressOpenChannel}
             onPress = {() => {
-            console.log(this.state.name);
+              Actions.channels({
+
+              });
             }}
           >
             <Text style = {styles.buttonText}>
@@ -44,6 +68,11 @@ class Chat extends React.Component {
       </View>
     );
   }
+
+
+  /*_onPressOpenChannel(){
+    this.props.navigator.push({name: 'Channels'});
+  }*/
 }
 //this a custom prop
 var styles = StyleSheet.create( {
@@ -61,9 +90,8 @@ var styles = StyleSheet.create( {
   title: {
     alignItems: 'center',
     justifyContent: 'center',
-    //marginTop:20,
-    //marginLeft: 20,
     fontSize: 20,
+    fontWeight: '600',
     width: 250,
     backgroundColor: '#FFFF31',
     borderWidth: 1,
@@ -79,9 +107,6 @@ var styles = StyleSheet.create( {
     backgroundColor: 'white'
   },
   button: {
-    //marginLeft
-    //justifyContent: 'center',
-    //alignItems: 'center',
     height: 50,
     width: 250,
     borderWidth: 1,
@@ -92,10 +117,8 @@ var styles = StyleSheet.create( {
     backgroundColor: '#AEB3B7'
   },
   buttonText: {
-    //marginLeft: 20,
     fontSize: 20,
     fontWeight: '600',
-    //height: 50,
     width: 50,
     alignSelf: 'center',
     textAlign: 'center',
