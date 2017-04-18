@@ -7,22 +7,27 @@ import {
   Button,
 } from 'react-native';
 
+import {
+  Actions
+} from 'react-native-router-flux';
+
 class Payments extends React.Component {
   render() {
     return(
       <View style={{flex: 1}}>
         <View style={{flex: 10}}>
-          <Text>Hello from Payments!</Text>
-	  <Button title="Pay with Card" style={styles.button1}>
-	  </Button>
-	  <Button title="Pay with Stripe" style={styles.button2}>
-	  </Button>
-        </View>
+          <Text style={styles.title}>Payments</Text>
+	        <Button title="Pay with Card" style={styles.button1}
+	           onPress={() => { Actions.cardPayments() }}>
+	        </Button>
+	        <Button title="Pay with Stripe" style={styles.button2}
+	           onPress={() => { Actions.stripePayments() }}>
+	        </Button>
+	     </View>
         <NavigationBar/>
       </View>
     );
   }
-
 }
 
 var styles = StyleSheet.create({
@@ -35,6 +40,11 @@ var styles = StyleSheet.create({
     marginTop: 40,
     marginLeft: 20,
     fontSize: 20,
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 40,
+    fontWeight: 'bold',
   },
 });
 export default Payments;
