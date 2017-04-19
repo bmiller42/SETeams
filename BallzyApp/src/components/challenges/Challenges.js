@@ -45,8 +45,10 @@ class Challenges extends React.Component {
       email: '',
       pass: '',
       title: '',
+      price: '',
+      description: '',
       chalArr: [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
-      todoSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row !=row2})
+      //todoSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row !=row2})
     };
 
     this.items = [];
@@ -62,10 +64,10 @@ class Challenges extends React.Component {
 
   componentDidMount() {
     this.itemsRef.on('child_added', (dataSnapshot) => {
-      this.items.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
-      this.setState({
-        todoSource: this.state.todoSource.cloneWithRows(this.items)
-      })
+      this.items.push({id: dataSnapshot.key, text: dataSnapshot.val()});
+      //this.setState({
+      //  todoSource: this.state.todoSource.cloneWithRows(this.items)
+      //})
     });
 
     this.itemsRef.on("value", (allChallSnapshot) => {
@@ -79,22 +81,24 @@ class Challenges extends React.Component {
     });
 
     this.itemsRef.on('child_removed', (dataSnapshot) => {
-      this.items = this.items.filter((x) => x.id !== dataSnapshot.key());
-      this.setState({
-        todoSource: this.state.todoSource.cloneWithRows(this.items)
-      })
+      this.items = this.items.filter((x) => x.id !== dataSnapshot.key);
+      //this.setState({
+      //  todoSource: this.state.todoSource.cloneWithRows(this.items)
+    //  })
     });
   }
 
   addChallenge() {
-    if (this.state.newChallenge !== '') {
+    if (this.state.title !== '' && this.state.description !== '') {
       this.itemsRef.push({
-        title: this.props.chaltitle,
-        description: this.props.description,
-        price: this.props.price
+        title: this.state.title,
+        description: this.state.description,
+        price: this.state.price
       });
       this.setState({
-        newChallenge: ''
+        title: '',
+        description: '',
+        price: ''
       });
     }
   }
@@ -116,6 +120,20 @@ class Challenges extends React.Component {
     );
   }
 
+  printChals() {
+    return this.state.chalArr.map(function(chals, i){
+      return(
+        <View key={i}>
+          <Text>Title: {chals.title}</Text>
+          <View>
+            <Text>Description: {chals.description}</Text>
+            <Text>Price: {chals.price}</Text>
+          </View>
+        </View>
+      );
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -131,37 +149,42 @@ class Challenges extends React.Component {
             value={this.state.search}
           />
 
-          <View>
-            <TextInput
-              style={styles.input}
-              onChangeText={(text) => this.setState({newChallenge: text})}
-              value={this.state.newChallenge}
-            />
-            <TouchableHighlight
-              onPress={() => this.addChallenge()}>
-              <Text>Add</Text>
-            </TouchableHighlight>
-          </View>
 
           <View>
-            <Text>
-              {this.state.chalArr[0].title}
-            </Text>
-            <Text>
-              {this.state.chalArr[0].description}
-            </Text>
+            {this.printChals()}
           </View>
 
-
-          <Text style={styles.title}>
-            Title: {this.props.chaltitle}
-          </Text>
-          <Text style={styles.title}>
-            Description: {this.props.description}
-          </Text>
-          <Text style={styles.title}>
-            Price: {this.props.price}
-          </Text>
+          <View style={styles.inputView}>
+          <TextInput
+            style={styles.titleInput}
+            placeholder='Title'
+            onChangeText={(text) => {
+                this.setState({
+                  title: text,
+                });
+              }}
+              value={this.state.title}
+          />
+          <TextInput
+            style={styles.titleInput}
+            placeholder='Description'
+            onChangeText={(text) => {
+                this.setState({
+                  description: text,
+                });
+              }}
+              value={this.state.description}
+          />
+          <TextInput
+            style={styles.titleInput}
+            placeholder='Price'
+            onChangeText={(text) => {
+                this.setState({
+                  price: text,
+                });
+              }}
+              value={this.state.price}
+          />
 
           <TouchableHighlight
             onPress={() => this.addChallenge()}>
@@ -169,6 +192,7 @@ class Challenges extends React.Component {
               Create
             </Text>
           </TouchableHighlight>
+          </View>
 
           <View style={{flex:0.5, flexDirection: 'row', justifyContent: 'space-between'}}>
           <TouchableOpacity
@@ -217,6 +241,9 @@ var styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#00BFFF'
   },
+  inputView: {
+    paddingTop: 20,
+  },
   input: {
     height: 36,
     padding: 4,
@@ -238,7 +265,7 @@ var styles = StyleSheet.create({
     height: 40,
     borderWidth: 2,
     borderColor: 'black',
-    margin: 20,
+    margin: 10,
     backgroundColor: 'white'
   },
 
