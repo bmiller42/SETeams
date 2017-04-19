@@ -1,10 +1,15 @@
 import React from 'react';
 import NavigationBar from '../navigationbar/NavigationBar';
+import * as firebase from 'firebase';
+
+
 import {
     View,
     Text,
     StyleSheet,
     TextInput,
+    listView,
+    TouchableHighlight,
     TouchableOpacity,
     ListView,
 } from 'react-native';
@@ -12,6 +17,8 @@ import {
 import {
   Actions,
 } from 'react-native-router-flux';
+
+var Firebase = require('firebase');
 
 class Challenges extends React.Component {
   state = {
@@ -21,11 +28,92 @@ class Challenges extends React.Component {
   constructor(props) {
     super(props);
 
-    const ds = new ListView.DataSource({rowHasChanged:(r1,r2) => r1 !== r2});
+    const config = {
+      apiKey: 'AIzaSyB3mAijmcJamuInn_lUk0vWxZhx7bHVjy0',
+      authDomain: 'testballzy.firebaseapp.com',
+      databaseURL: 'https://testballzy.firebaseio.com',
+      storageBucket: 'testballzy.appspot.com'
+    }
+
+    const firebaseApp = firebase.initializeApp(config);
+    const myFirebaseRef = firebaseApp.database().ref('list');
+
+    this.itemsRef = myFirebaseRef.child('Challenges');
+
     this.state = {
-      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+      newChallenge: '',
+      email: '',
+      pass: '',
+      title: '',
+      chalArr: [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
+      todoSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row !=row2})
     };
 
+    this.items = [];
+    this.tempChallArray = [];
+
+    //const ds = new ListView.DataSource({rowHasChanged:(r1,r2) => r1 !== r2});
+    //this.state = {
+      //dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+    //};
+
+  }
+
+
+  componentDidMount() {
+    this.itemsRef.on('child_added', (dataSnapshot) => {
+      this.items.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
+      this.setState({
+        todoSource: this.state.todoSource.cloneWithRows(this.items)
+      })
+    });
+
+    this.itemsRef.on("value", (allChallSnapshot) => {
+      allChallSnapshot.forEach((challengeSnapshot) => {
+        var chall = challengeSnapshot.val();
+        this.tempChallArray.push(chall);
+      });
+      this.setState({
+        chalArr: this.tempChallArray
+      });
+    });
+
+    this.itemsRef.on('child_removed', (dataSnapshot) => {
+      this.items = this.items.filter((x) => x.id !== dataSnapshot.key());
+      this.setState({
+        todoSource: this.state.todoSource.cloneWithRows(this.items)
+      })
+    });
+  }
+
+  addChallenge() {
+    if (this.state.newChallenge !== '') {
+      this.itemsRef.push({
+        title: this.props.chaltitle,
+        description: this.props.description,
+        price: this.props.price
+      });
+      this.setState({
+        newChallenge: ''
+      });
+    }
+  }
+
+  removeTodo(rowData) {
+    this.itemsRef.child(rowData.id).remove();
+  }
+
+  renderRow(rowData) {
+    return(
+      <TouchableHighlight
+        onPress={() => this.removeTodo(rowData)}>
+        <View>
+          <View style={styles.row}>
+            <Text style={styles.todoText}>{rowData.text}</Text>
+          </View>
+        </View>
+      </TouchableHighlight>
+    );
   }
 
   render() {
@@ -43,13 +131,30 @@ class Challenges extends React.Component {
             value={this.state.search}
           />
 
-          <ListView
-            dataSource={this.state.dataSource}
-            renderRow={(rowData) => <Text>{rowData}</Text>}
-          />
+          <View>
+            <TextInput
+              style={styles.input}
+              onChangeText={(text) => this.setState({newChallenge: text})}
+              value={this.state.newChallenge}
+            />
+            <TouchableHighlight
+              onPress={() => this.addChallenge()}>
+              <Text>Add</Text>
+            </TouchableHighlight>
+          </View>
+
+          <View>
+            <Text>
+              {this.state.chalArr[0].title}
+            </Text>
+            <Text>
+              {this.state.chalArr[0].description}
+            </Text>
+          </View>
+
 
           <Text style={styles.title}>
-            Title: {this.props.title}
+            Title: {this.props.chaltitle}
           </Text>
           <Text style={styles.title}>
             Description: {this.props.description}
@@ -57,6 +162,13 @@ class Challenges extends React.Component {
           <Text style={styles.title}>
             Price: {this.props.price}
           </Text>
+
+          <TouchableHighlight
+            onPress={() => this.addChallenge()}>
+            <Text style={styles.buttonText}>
+              Create
+            </Text>
+          </TouchableHighlight>
 
           <View style={{flex:0.5, flexDirection: 'row', justifyContent: 'space-between'}}>
           <TouchableOpacity
@@ -95,7 +207,7 @@ class Challenges extends React.Component {
 
 
 Challenges.propTypes = {
-  title: React.PropTypes.string,
+  chaltitle: React.PropTypes.string,
   description: React.PropTypes.string,
   price: React.PropTypes.string,
 };
@@ -104,6 +216,17 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#00BFFF'
+  },
+  input: {
+    height: 36,
+    padding: 4,
+    marginRight: 5,
+    flex: 4,
+    fontSize: 18,
+    borderWidth: 1,
+    borderColor: '#48afdb',
+    borderRadius: 4,
+    color: '#48BBEC'
   },
   title: {
     marginTop: 10,
