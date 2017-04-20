@@ -149,7 +149,6 @@ class Challenges extends React.Component {
             value={this.state.search}
           />
 
-
           <View>
             {this.printChals()}
           </View>
