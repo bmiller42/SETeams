@@ -43,7 +43,7 @@ class Chat extends React.Component {
           </Text>
           <TextInput
             style = {styles.nameInput}
-            placeholder='EX: Skankhunt42'
+            placeholder='EX: elitehacker123'
             onChangeText={ (text) => { this.setState({name: text}); } }
             value = {this.state.name}
           />
