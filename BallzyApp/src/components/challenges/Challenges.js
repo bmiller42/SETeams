@@ -1,7 +1,9 @@
 import React from 'react';
 import NavigationBar from '../navigationbar/NavigationBar';
 import * as firebase from 'firebase';
-
+import PrintChallengesClass from './TestPage';
+import FirebaseDb from './firebaseClass';
+import Firebase from './Globals';
 
 import {
     View,
@@ -12,13 +14,14 @@ import {
     TouchableHighlight,
     TouchableOpacity,
     ListView,
+    ScrollView,
 } from 'react-native';
 
 import {
   Actions,
 } from 'react-native-router-flux';
 
-var Firebase = require('firebase');
+
 
 class Challenges extends React.Component {
   state = {
@@ -35,10 +38,10 @@ class Challenges extends React.Component {
       storageBucket: 'testballzy.appspot.com'
     }
 
-    const firebaseApp = firebase.initializeApp(config);
-    const myFirebaseRef = firebaseApp.database().ref('list');
+    //const firebaseApp = firebase.initializeApp(config);
+    //const myFirebaseRef = firebaseApp.database().ref('list');
 
-    this.itemsRef = myFirebaseRef.child('Challenges');
+    this.itemsRef = Firebase.child('Challenges');
 
     this.state = {
       newChallenge: '',
@@ -150,7 +153,13 @@ class Challenges extends React.Component {
           />
 
           <View>
-            {this.printChals()}
+            <PrintChallengesClass
+              listChalls = {this.state.chalArr}
+            />
+          </View>
+
+          <View>
+            <Text>{this.props.chaltitle}</Text>
           </View>
 
           <View style={styles.inputView}>

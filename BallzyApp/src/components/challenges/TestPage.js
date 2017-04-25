@@ -1,57 +1,41 @@
 import React from 'react';
-import NavigationBar from '../navigationbar/NavigationBar';
-import {loadData} from './Globals';
-//import ReactDom from 'react-dom';
+
 
 import {
-    View,
-    Text,
-    StyleSheet,
-    TextInput,
-    TouchableOpacity,
-    ListView,
-} from 'react-native';
+   View,
+   Text,
+   StyleSheet,
+   ScrollView
+} from 'react-native'
 
-import {
-  Actions,
-} from 'react-native-router-flux';
+export default PrintChallengesClass = (props) => {
+   const createChallenge= (challenge) => (
+      <Text
+         key={challenge.id}
+         style={styles.challenge}>
+         {challenge.name}
+      </Text>
+   )
 
-
-class TestPage extends React.Component {
-
-  constructor(props) {
-      super(props);
-      this.state = {
-        data: null,
-      };
-      this.loadDataFromServer = this.loadDataFromServer.bind(this);
-    }
-
-    loadDataFromServer(url="http://localhost:8000/challenges/1/", params=null) {
-      loadData(
-        data => {
-          this.setState({data: data});
-        },
-        url,
-        params
-      );
-    }
-
-    componentDidMount() {
-      this.loadDataFromServer();
-  }
-
-  render() {
-    return(
-
-      <View>
-        <Text> {this.state.data} </Text>
-        <Text> Hello from Test </Text>
+   return (
+      <View style={styles.container}>
+         <ScrollView>
+            {props.listChalls.map(createChallenge)}
+         </ScrollView>
       </View>
-    );
-  }
-
+   )
 }
 
+const styles = StyleSheet.create ({
+   container: {
 
-export default TestPage;
+
+   },
+   challenge: {
+      margin: 10,
+      padding: 10,
+      height: 30,
+      borderColor: 'red',
+      borderWidth: 1
+   }
+})

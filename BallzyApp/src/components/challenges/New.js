@@ -14,7 +14,7 @@ import {
 
 class New extends React.Component {
   state = {
-    title: '',
+    chaltitle: '',
     description: '',
     price: '',
   };
@@ -29,10 +29,10 @@ class New extends React.Component {
           placeholder='Title'
           onChangeText={(text) => {
               this.setState({
-                title: text,
+                chaltitle: text,
               });
             }}
-            value={this.state.title}
+            value={this.state.chaltitle}
         />
         <TextInput
           style={styles.titleInput}
