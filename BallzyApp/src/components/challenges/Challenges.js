@@ -92,11 +92,11 @@ class Challenges extends React.Component {
   }
 
   addChallenge() {
-    if (this.state.title !== '' && this.state.description !== '') {
+    if (this.props.chaltitle !== '' && this.props.description !== '') {
       this.itemsRef.push({
-        title: this.state.title,
-        description: this.state.description,
-        price: this.state.price
+        title: this.props.chaltitle,
+        description: this.props.description,
+        price: this.props.price
       });
       this.setState({
         title: '',

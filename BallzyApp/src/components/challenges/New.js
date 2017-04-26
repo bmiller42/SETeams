@@ -59,7 +59,7 @@ class New extends React.Component {
         style={styles.button}
         onPress={() => {
           Actions.challenges({
-            title: this.state.title,
+            chaltitle: this.state.chaltitle,
             description: this.state.description,
             price: this.state.price,
           });
